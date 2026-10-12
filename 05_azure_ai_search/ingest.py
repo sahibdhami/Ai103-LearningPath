@@ -1,7 +1,6 @@
 
 from common import search_client, embed
 
-
 documents = [
     {
         "id": "1",
