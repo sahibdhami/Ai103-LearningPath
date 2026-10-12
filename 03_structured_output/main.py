@@ -55,6 +55,29 @@ def main() -> None:
     print("Category:", parsed_reponse.category)
     print("Priority:", parsed_reponse.priority)
     print("Human review:", parsed_reponse.requires_human_review)
+    print("Customer sentiment:", parsed_reponse.customer_sentiment)
+    print("Suggested action:", parsed_reponse.suggested_action)
+
+    route = route_ticket(parsed_reponse)
+    print("Route:", route)
+    
+def route_ticket(ticket: SupportTicket) -> str:
+    if ticket.requires_human_review:
+        return "human-review-queue"
+
+    if ticket.category == "Billing":
+        return "billing-queue"
+
+    if ticket.category == "Technical":
+        return "technical-support-queue"
+
+    if ticket.customer_sentiment == "Negative":
+        return "escalation-queue"
+    
+    if ticket.suggested_action.lower().startswith("refund"):
+        return "billing-queue"
+    
+    return "general-support-queue"
 
 if __name__ == "__main__":
     main()
