@@ -5,3 +5,5 @@ pydantic
 numpy
 azure-search-documents
 pypdf
+azure-ai-vision-imageanalysis
+azure-cognitiveservices-speech
